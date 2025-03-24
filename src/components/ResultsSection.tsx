@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import { Button } from '@/components/ui/button';
-import { ChartBar, Brain } from 'lucide-react';
+import { ChartBar, Brain, AlertTriangle, Check, XCircle } from 'lucide-react';
 import { useInView } from '@/utils/animations';
 
 interface ResultsSectionProps {
@@ -17,10 +17,10 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ predictionScore, onRese
   
   // Calculate risk level based on prediction score
   const riskLevel = predictionScore < 0.4 
-    ? { label: 'Low Risk', color: 'bg-green-500' }
+    ? { label: 'Low Risk', color: 'bg-green-500', icon: Check }
     : predictionScore < 0.7 
-      ? { label: 'Moderate Risk', color: 'bg-yellow-500' }
-      : { label: 'High Risk', color: 'bg-red-500' };
+      ? { label: 'Moderate Risk', color: 'bg-yellow-500', icon: AlertTriangle }
+      : { label: 'High Risk', color: 'bg-red-500', icon: XCircle };
   
   useEffect(() => {
     if (isInView) {
@@ -59,7 +59,10 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ predictionScore, onRese
             <div className={`w-32 h-32 rounded-full flex items-center justify-center mb-4 ${riskLevel.color} bg-opacity-20 border-2 ${riskLevel.color.replace('bg-', 'border-')}`}>
               <span className="text-3xl font-bold text-alzheimer-800">{Math.round(predictionScore * 100)}%</span>
             </div>
-            <h3 className="text-xl font-semibold text-alzheimer-800 mb-2">{riskLevel.label}</h3>
+            <h3 className="text-xl font-semibold text-alzheimer-800 mb-2 flex items-center">
+              <riskLevel.icon className={`mr-2 ${riskLevel.color.replace('bg-', 'text-')}`} size={20} />
+              {riskLevel.label}
+            </h3>
             <p className="text-center text-gray-600 max-w-md">
               {predictionScore < 0.4 
                 ? "Based on the provided data, the prediction model indicates a lower likelihood of Alzheimer's disease progression."
