@@ -62,10 +62,10 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ predictionScore, onRese
             <h3 className="text-xl font-semibold text-alzheimer-800 mb-2">{riskLevel.label}</h3>
             <p className="text-center text-gray-600 max-w-md">
               {predictionScore < 0.4 
-                ? 'Based on the provided data, the prediction model indicates a lower likelihood of Alzheimer's disease progression.'
+                ? "Based on the provided data, the prediction model indicates a lower likelihood of Alzheimer's disease progression."
                 : predictionScore < 0.7 
-                  ? 'The assessment indicates a moderate risk level. Further clinical evaluation is recommended.'
-                  : 'The assessment indicates a higher risk level. We strongly recommend consulting with a healthcare professional specializing in neurodegenerative diseases.'
+                  ? "The assessment indicates a moderate risk level. Further clinical evaluation is recommended."
+                  : "The assessment indicates a higher risk level. We strongly recommend consulting with a healthcare professional specializing in neurodegenerative diseases."
               }
             </p>
           </div>
