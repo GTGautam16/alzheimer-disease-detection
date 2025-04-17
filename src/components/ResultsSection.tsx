@@ -17,10 +17,10 @@ const ResultsSection: React.FC<ResultsSectionProps> = ({ predictionScore, onRese
   
   // Calculate risk level based on prediction score
   const riskLevel = predictionScore < 0.4 
-    ? { label: 'Low Risk', color: 'bg-green-500', icon: Check }
+    ? { label: "Low Risk", color: "bg-green-500", icon: Check }
     : predictionScore < 0.7 
-      ? { label: 'Moderate Risk', color: 'bg-yellow-500', icon: AlertTriangle }
-      : { label: 'High Risk', color: 'bg-red-500', icon: XCircle };
+      ? { label: "Moderate Risk", color: "bg-yellow-500", icon: AlertTriangle }
+      : { label: "High Risk", color: "bg-red-500", icon: XCircle };
   
   useEffect(() => {
     if (isInView) {
